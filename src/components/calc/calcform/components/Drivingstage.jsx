@@ -7,22 +7,33 @@ export default class Drivingstage extends React.Component {
     constructor(props) {
         super(props)
         console.warn('drivingstage constructor props=', props)
-        //const {drivingstage} = calcView.getInitialStates();
-        //this.state = { drivingstage: drivingstage }
+        this.state = {
+            selected: props.drivingstage.value,
+            disabled: props.drivingstage.disabled,
+        }
+    }
+    componentDidUpdate(prevProps) {
+        if (this.state.disabled != this.props.drivingstage.disabled){
+            this.setState({
+                selected: this.props.drivingstage.value,
+                disabled: this.props.drivingstage.disabled
+            })
+        }
     }
 
     render() {
 
-                    const options = calcView.getOptions("drivingstage", this.props.age);
+                    const options = this.state.disabled ? [] :calcView.getOptions("drivingstage", this.props.age.value);
 
                    console.log('options=', options)
                     return (
                         <FormSelect name="drivingstage" formlabel="Стаж водителя, выбранного выше по возрасту"
                                     labelProps={{className: "col-lg-12 label label-info mandatory-parameter"}}
                                     options={options}
-                                    placeholder="Выберите место регистрации ТС"
-                                    assigned={(v) => this.props.setDrivingstage(v)}
-                                    selected={options[0].label}
+                                    placeholder="Выберите стаж водителя"
+                                    assigned={(v) => this.props.setDrivingstage({value:v})}
+                                    selected={this.state.selected}
+                                    enabled={!this.state.disabled}
                         />
                     )
 

@@ -44,7 +44,7 @@ export default class CalcTable extends React.Component{
 
 
             city:city,
-          //  limit:limit,
+            limit:limit,
             crime:crime,
 
 
@@ -63,7 +63,7 @@ export default class CalcTable extends React.Component{
             city: 'По территории использования',
             limit: 'По ограничению лиц, допущенных к управлению ТС',
             crime: 'По наличию грубых нарушений условий страхования',
-            driving_experience: 'Минимальный возраст и водительский стаж лиц, допущенных к управлению ТС',
+            driving_experience: 'По минимальному возрасту и стажу лица, допущенного к управлению ТС',
 
             typeTC: 'Базовый тариф',
         }

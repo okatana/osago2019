@@ -5,7 +5,8 @@ import { setPeriodKbm } from '../../../../actions'
 
 const mapStateToProps = (state, props) => {
     return {
-        kbm: state.kbm
+        kbm: state.kbm,
+        periodKbm: state.periodKbm,
         /* registration: state.registration,
         fixedTerm: state.fixedTerm,*/
     }

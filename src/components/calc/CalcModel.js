@@ -82,14 +82,17 @@ export default class CalcModel {
     }
 
     getAge(key=null){
+
+        console.log('>>>>>>getAge  key='+key)
         if(key)
             return this.age[key];
         return this.age;
     }
-    getDrivingstage(ageKey, key=null){
-        console.log('>>>>>>getDrivingstage  ageKey'+ageKey)
-        console.log('>>>>>>getDrivingstage  key'+key)
+    getDrivingstage(ageKey='de0', key=null){
+        console.log('>>>>>>getDrivingstage  ageKey='+ageKey)
+        console.log('>>>>>>getDrivingstage  key='+key)
         var age = this.getAge(ageKey);
+        console.log('+++>>>+++',age)
         if(key)
             return age.drivingstage[key];
         return age.drivingstage;
@@ -101,8 +104,8 @@ export default class CalcModel {
         return this.kbm;
     }
     getPeriodKbm(kbmKey, key=null){
-        console.log('>>>>>>getDrivingstage  kbmKey'+kbmKey)
-        console.log('>>>>>>getDrivingstage  key'+key)
+        console.log('>>>>>>getPeriodKbm  kbmKey'+kbmKey)
+        console.log('>>>>>>getPeriodKbm  key'+key)
         var kbm = this.getKbm(kbmKey);
         if(key)
             return kbm.periodKbm[key];

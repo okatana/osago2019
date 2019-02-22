@@ -58,8 +58,19 @@ export default class Calculator{
         this.factors.city = this.getCity();
         this.factors.crime = this.getCrime();
         this.factors.trailer = this.getTrailer();
+        this.factors.limit = this.getLimit();
 
 
+    }
+
+    getLimit(){
+        if(this.params.owner=='yur'){
+            return 1.8
+        }
+        if(this.params.limit.value){
+            return 1.87
+        }
+        return 1;
     }
     getTypeTC() {
         var tTC=this.params.typeTC;

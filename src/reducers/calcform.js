@@ -2,8 +2,7 @@ import {
     SET_OWNER, SET_REGISTRATION, SET_TYPETC, SET_TRAILER, SET_POWERTC,
     SET_TERM, SET_FIXED_TERM, DISABLE_TERM,
     SET_PERIOD, SET_REGIONS, SET_CITY,
-    SET_CRIME,
-    SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
+    SET_CRIME, SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
     SET_KBM, SET_PERIOD_KBM,
 } from '../actions/actionTypes'
 
@@ -103,6 +102,8 @@ export function regionsReducer (state = {value: 'r90', disabled: false},  action
     }
 }
 
+
+
 export function cityReducer (state = {value: null, disabled: false}, action) {
     switch (action.type) {
         case SET_CITY:
@@ -123,7 +124,7 @@ export function limitReducer (state = false, action) {
     }
 }
 
-export function ageReducer (state = 'de0', action) {
+/*export function ageReducer (state = 'de0', action) {
     switch (action.type) {
         case SET_AGE:
             return action.age
@@ -131,12 +132,21 @@ export function ageReducer (state = 'de0', action) {
         default:
             return state
     }
-}
+}*/
+export function ageReducer (state = {value: 'de0', disabled: false},  action) {
+    switch (action.type) {
+        case SET_AGE:
+            return {...state, ...action.age}
 
-export function drivingstageReducer (state = null, action) {
+        default:
+            return state
+    }
+}
+//export function drivingstageReducer (state = 'de0', action) {
+export function drivingstageReducer (state = {value: null, disabled: false},  action) {
     switch (action.type) {
         case SET_DRIVINGSTAGE:
-            return action.drivingstage
+            return {...state, ...action.drivingstage}
 
         default:
             return state

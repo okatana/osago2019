@@ -7,12 +7,23 @@ export default class Limit extends React.Component {
         super(props)
         console.warn('constructor props=', props)
         this.state = {
-            limit: {selected: false,enabled:true, }
+           // limit: {selected: false,enabled:true,
+            selected: props.limit.value
+
         }
     }
-    assignedHandler(key, value) {
+   /* assignedHandler(key, value) {
         this.props.view.assign(key, value);
-    }
+    }*/
+
+assignedHandler(value) {
+    this.props.setLimit({value:value});
+    this.setState({selected:value})
+}
+componentDidUpdate(prevProps) {
+    if (this.state.selected != this.props.limit.value)
+        this.setState({selected:this.props.limit.value})
+}
     render() {
         console.log('**** limit'+this.limit)
         return (
@@ -21,9 +32,10 @@ export default class Limit extends React.Component {
                            id="limit"
                            labelProps={{className: "col-lg-12 label label-info"}}
                            label="Нет, не ограничено"
-                           selected={this.props.limit}
-                           enabled={this.state.limit.enabled}
-                           assigned={(v)=>this.assignedHandler('limit', v)}/>
+                           selected={this.state.selected}
+                           enabled={this.props.limit.disabled}
+                           assigned={(v)=>this.assignedHandler(v)}
+                           />
 
 
         )

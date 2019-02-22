@@ -3,6 +3,7 @@ import {
     setFixedTerm as setFixedTermAction,
     setTerm as setTermAction,
     setPeriod as setPeriodAction,
+    setAge as setAgeAction,
     setDrivingstage as setDrivingstageAction,
     setCrime as setCrimeAction,
     setLimit as setLimitAction,
@@ -56,7 +57,7 @@ export default class CalcView{
         switch (newVal) {
             case "yur":
                 this.updateStates({
-                    limit: true,
+                    limit : {value: true, disabled:false}
 //                    trailer: {value: false, disabled:false}
                     /*   age: null,
                        drivingstage: null,*/
@@ -65,7 +66,7 @@ export default class CalcView{
 
             case "fiz":
                 this.updateStates({
-                    limit: false,
+                    limit : {value: false, disabled:true}
 //                    trailer: {value: false, disabled:false}
 
                 /*   age: null,
@@ -182,6 +183,9 @@ export default class CalcView{
                     break;
                 case 'limit' :
                     this.store.dispatch(setLimitAction(value))
+                    break;
+                case 'age' :
+                    this.store.dispatch(setAgeAction(value))
                     break;
                 case 'drivingstage':
                     this.store.dispatch(setDrivingstageAction(value))
@@ -305,6 +309,7 @@ export default class CalcView{
                     options.push({value: key, label: key, selected: false});
                 }
                 break;
+
             case "age":
                 var obj = this.model.getAge();
                 //  console.log('period obj=', obj);
@@ -315,7 +320,7 @@ export default class CalcView{
 
             case "drivingstage":
                 var obj = this.model.getDrivingstage(parameter);
-                console.log('++++++view getOptions drivingstage parameter='+parameter)
+                console.log('view getOptions drivingstage  parameter='+parameter)
                 for (var key in obj) {
                     options.push({value: key, label: key, selected: true});
                 }
