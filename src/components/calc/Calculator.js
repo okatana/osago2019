@@ -60,6 +60,7 @@ export default class Calculator{
         this.factors.crime = this.getCrime();
         this.factors.trailer = this.getTrailer();
         this.factors.limit = this.getLimit();
+        this.factors.kbm = this.getKbm();
 
 
     }
@@ -128,24 +129,23 @@ export default class Calculator{
         console.log('getPeriod() this.params.period=', this.params.period)
         return this.period ? this.period.coeff : null;
     }
+
+    getKbm(){
+        return   this.model.getKbmCoeff(this.params.kbm, this.params.periodKbm);
+    }
     /*getCrime() {
         console.log('getCrime() this.params.crime=', this.params.crime)
         return this.crime ? this.crime.coeff : null;
     }*/
     calcPremium(){
-        let premium = 0;
-        premium+=this.calcTypeTCPremium();
-        premium+=this.calcPowerTCPremium();
-        premium+=this.calcPeriodPremium();
-        premium+=this.calcTermPremium();
-        premium+=this.calcKbmPremium();
-        premium+=this.calcTrailerPremium();
-        premium+=this.calcRegionsPremium();
-        premium+=this.calcLimitPremium();
-        premium+=this.calcCrimePremium();
-        premium+=this.calcAgeStagePremium();
+        let premium=1
+        for (let [key, value] of Object.entries(this.factors)) {
+            if (value) {
+                premium*=value
+            }
+        }
 
-        return premium
+        return Math.round(premium*100)/100
     }
 
     calcTypeTCPremium(){
@@ -160,33 +160,6 @@ export default class Calculator{
             return buildingType==='wood'? ssObj.wood : ssObj.stone;
         }
        */ return 10;
-    }
-    calcPowerTCPremium(){
-        return 0
-    }
-    calcPeriodPremium(){
-        return 0
-    }
-    calcTermPremium(){
-        return 0
-    }
-    calcKbmPremium(){
-        return 0
-    }
-    calcTrailerPremium(){
-        return 0
-    }
-    calcRegionsPremium(){
-        return 0
-    }
-    calcLimitPremium(){
-        return 0
-    }
-    calcCrimePremium(){
-        return 0
-    }
-    calcAgeStagePremium(){
-        return 0
     }
 
 

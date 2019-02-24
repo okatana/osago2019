@@ -157,17 +157,16 @@ export function drivingstageReducer (state = {value: 'СТАЖ 0', disabled: fal
     }
 }
 
-export function kbmReducer (state = 'kbm1', action) {
+export function kbmReducer (state = {value: 'kbm1', fixed: false}, action) {
     switch (action.type) {
         case SET_KBM:
-            return action.kbm
-
+            return {...state, ...action.kbm}
         default:
             return state
     }
 }
 
-export function periodKbmReducer (state = null, action) {
+export function periodKbmReducer (state = '0', action) {
     switch (action.type) {
         case SET_PERIOD_KBM:
             return action.periodKbm

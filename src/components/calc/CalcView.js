@@ -12,6 +12,7 @@ import {
     setPowerTC as setPowerTCAction,
     setRegions as setRegionsAction,
     setCity as setCityAction,
+    setKbm,
 
 } from '../../actions'
 
@@ -40,13 +41,33 @@ export default class CalcView{
         let ownerWatch = watch(this.store.getState, 'owner')
         this.store.subscribe(ownerWatch((newVal, oldVal, objectPath) => {
             this.handleOwnerDependencies(newVal, oldVal)
+            this.handlePeriodKbmDependencies()
         }))
 
         let typeTCWatch = watch(this.store.getState, 'typeTC')
         this.store.subscribe(typeTCWatch((newVal, oldVal, objectPath) => {
             this.handleTypeTCDependencies(newVal, oldVal)
         }))
+
+        let limitWatch = watch(this.store.getState, 'limit')
+        this.store.subscribe(limitWatch((newVal, oldVal, objectPath) => {
+            this.handlePeriodKbmDependencies()
+        }))
+
+
     }
+
+    handlePeriodKbmDependencies(){
+        var owner = this.store.getState().owner;
+        var limit = this.store.getState().limit.value;
+        if (owner=='fiz' && limit) {
+            var kbm = {value:'kbm5', fixed:true}
+        } else {
+            var kbm = {fixed:false}
+        }
+        this.updateStates({kbm:kbm})
+    }
+
     handleTypeTCDependencies(newVal, oldVal) {
         this.setTrailerDependency()
         this.setPowerTCDependency()
@@ -201,6 +222,9 @@ export default class CalcView{
                     break;
                 case 'city' :
                     this.store.dispatch(setCityAction(value))
+                    break;
+                case 'kbm' :
+                    this.store.dispatch(setKbm(value))
                     break;
                 default:
 //                    moreChanges = false;    // так ничего и не изменили

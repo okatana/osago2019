@@ -12,6 +12,8 @@ export default class CalcTable extends React.Component{
     componentDidMount() {
 //        this.setFactors([]);
         this.calculate()
+        this.calcPremium();
+
     }
 
     setFactors(factors) {
@@ -28,6 +30,8 @@ export default class CalcTable extends React.Component{
         if (prevProps !== this.props) {
 //            console.warn('CalcTable.componentDidUpdate() props=', this.props)
             this.calculate()
+            this.calcPremium();
+
         }
     }
 
@@ -40,7 +44,7 @@ export default class CalcTable extends React.Component{
             term: term,
             period:period,
             trailer:trailer,
-           // kbm:kbm,
+            kbm:kbm,
 
 
             city:city,
@@ -78,6 +82,12 @@ export default class CalcTable extends React.Component{
         return Object.keys(this.factorData());
     }
 
+
+    calcPremium(){
+
+        this.props.setPremium(calculator.calcPremium())
+    }
+
     render(){
         return(
             <div>
@@ -86,5 +96,7 @@ export default class CalcTable extends React.Component{
             </div>
         )
     }
+
+
 
 }

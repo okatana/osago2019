@@ -65,6 +65,16 @@ export default class CalcModel {
             }}
         return null;
     }
+
+    getKbmCoeff(kbmKey, periodKbmKey){  //this.params.kbm, this.params.periodKbm
+        if(this.kbm[kbmKey]){
+            return this.kbm[kbmKey].periodKbm[periodKbmKey]
+
+        }else{
+            return null
+        }
+
+    }
     getTerm(key=null){
         if(key)
             return this.term[key];

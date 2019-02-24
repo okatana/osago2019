@@ -5,21 +5,8 @@ import { setErrorMessage, clearErrorMessage } from '../actions'
 
 const mapStateToProps = (state, props) => {
     return {
-        owner:state.owner,
-        registration:state.registration,
-        typeTC:state.typeTC,
-        trailer:state.trailer,
-        powerTC:state.powerTC,
-        period:state.period,
-        term:state.term,
-        regions:state.regions,
-        city:state.city,
-        crime:state.crime,
-        limit:state.limit,
-        kbm:state.kbm,
-        age:state.age,
-        drivingstage:state.drivingstage,
-        periodKbm:state.periodKbm,
+        premium:state.premium,
+
 
     }
 }

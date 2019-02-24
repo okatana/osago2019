@@ -18,10 +18,11 @@ const mapStateToProps = (state, props) => {
         city:state.city,
         crime:state.crime,
         limit:state.limit,
-        kbm:state.kbm,
+        kbm:state.kbm.value,
+        periodKbm:state.periodKbm,
         age:state.age.value,
         drivingstage:state.drivingstage.value,
-        periodKbm:state.periodKbm,
+
 
 
 

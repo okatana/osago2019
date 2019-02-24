@@ -8,21 +8,29 @@ export default class Kbm extends React.Component {
         super(props)
         console.warn('constructor props=', props)
         this.state = {
-            kbm: {selected: "kbm1"}
+            selected: props.kbm.value,
+
         }
     }
-    render() {
 
-                    const options = calcView.getOptions("kbm")
-                   console.log('options=', options)
-                    return (
-                        <FormSelect name="kbm" formlabel="КБМ"
-                                    labelProps={{className: "col-lg-12 label label-info mandatory-parameter"}}
-                                    options={options}
-                                    placeholder="Выберите свой коэффициент КБМ"
-                                    assigned={(v) => this.props.setKbm(v)}
-                                    selected={this.state.kbm.selected}
-                        />
-                    )
+
+    render() {
+        var options = calcView.getOptions("kbm")
+        if (this.props.kbm.fixed) {
+            options = options.filter(function(elem){
+                return elem.value === this.props.kbm.value
+            }, this)
+        }
+        console.log('kbm options=', options)
+
+        return (
+            <FormSelect name="kbm" formlabel="КБМ"
+                        labelProps={{className: "col-lg-12 label label-info mandatory-parameter"}}
+                        options={options}
+                        placeholder="Выберите свой коэффициент КБМ"
+                        assigned={(v) => this.props.setKbm({value:v})}
+                        selected={this.state.selected}
+            />
+        )
     }
 }
