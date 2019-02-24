@@ -23,7 +23,7 @@ export default class Drivingstage extends React.Component {
 
     render() {
 
-                    const options = this.state.disabled ? [] :calcView.getOptions("drivingstage", this.props.age.value);
+                    const options = this.state.disabled ? [] :calcView.getOptions("drivingstage", this.props.age);
 
                    console.log('options=', options)
                     return (

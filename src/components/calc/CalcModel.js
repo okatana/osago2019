@@ -56,6 +56,15 @@ export default class CalcModel {
         }}
         return null;
     }
+    getDrivingstageCoeff(ageKey, drivingstageName){
+        console.log('this.age[ageKey] ',this.age[ageKey])
+        if(this.age[ageKey]){
+            var str = this.age[ageKey].drivingstage[drivingstageName]
+            if(str!=undefined) {
+                return str
+            }}
+        return null;
+    }
     getTerm(key=null){
         if(key)
             return this.term[key];

@@ -56,6 +56,7 @@ export default class Calculator{
         this.factors.term = this.getTerm();
         this.factors.period = this.getPeriod();
         this.factors.city = this.getCity();
+        this.factors.drivingstage = this.getDrivingstage();
         this.factors.crime = this.getCrime();
         this.factors.trailer = this.getTrailer();
         this.factors.limit = this.getLimit();
@@ -96,6 +97,10 @@ export default class Calculator{
         var cityKoeff = this.model.getCityCoeff(this.params.regions, this.params.city.value, this.params.typeTC);
         return cityKoeff ? cityKoeff : null;  //вернет null если физ лицо, Россия, на 1 год, ТС кат В
 
+    }
+    getDrivingstage(){
+        var drivingstageKoeff = this.model.getDrivingstageCoeff(this.params.age, this.params.drivingstage);
+        return drivingstageKoeff ? drivingstageKoeff : null;  //вернет null если физ лицо, Россия, на 1 год, ТС кат В
     }
 
     getTrailer(){

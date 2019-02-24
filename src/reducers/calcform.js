@@ -104,15 +104,7 @@ export function regionsReducer (state = {value: 'r90', disabled: false},  action
 
 
 
-export function cityReducer (state = {value: null, disabled: false}, action) {
-    switch (action.type) {
-        case SET_CITY:
-            return {...state, ...action.city}
 
-        default:
-            return state
-    }
-}
 
 export function limitReducer (state = false, action) {
     switch (action.type) {
@@ -142,8 +134,20 @@ export function ageReducer (state = {value: 'de0', disabled: false},  action) {
             return state
     }
 }
+
+export function cityReducer (state = {value: null, disabled: false}, action) {
+    switch (action.type) {
+        case SET_CITY:
+            return {...state, ...action.city}
+
+        default:
+            return state
+    }
+}
+
+
 //export function drivingstageReducer (state = 'de0', action) {
-export function drivingstageReducer (state = {value: null, disabled: false},  action) {
+export function drivingstageReducer (state = {value: 'СТАЖ 0', disabled: false},  action) {
     switch (action.type) {
         case SET_DRIVINGSTAGE:
             return {...state, ...action.drivingstage}
