@@ -1,6 +1,6 @@
 import {
     SET_OWNER, SET_REGISTRATION, SET_TYPETC, SET_TRAILER, SET_POWERTC,
-    SET_TERM, SET_FIXED_TERM, DISABLE_TERM,
+    SET_TERM, //SET_FIXED_TERM, DISABLE_TERM,
     SET_PERIOD, SET_REGIONS, SET_CITY,
     SET_CRIME, SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
     SET_KBM, SET_PERIOD_KBM,
@@ -67,14 +67,11 @@ export function trailerReducer (state = {value: false, disabled: true}, action) 
 
 
 
-export function termReducer (state = {value: 't10', fixed: false, disabled: false}, action) {
+export function termReducer (state = {value: 't10', fixed: true, disabled: true}, action) {
     switch (action.type) {
         case SET_TERM:
-            return {...state, ...{value:action.term}}
-        case SET_FIXED_TERM:
-            return {...state, ...{fixed:action.term}}
-        case DISABLE_TERM:
-            return {...state, ...{disabled:action.disabled}}
+            return {...state, ...action.term}
+
         default:
             return state
     }

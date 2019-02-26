@@ -1,6 +1,7 @@
 import {
     SET_OWNER, SET_REGISTRATION, SET_TYPETC, SET_TRAILER,  SET_POWERTC,
-    SET_TERM, SET_FIXED_TERM, DISABLE_TERM, SET_PERIOD, SET_REGIONS, SET_CITY,
+    SET_TERM, //SET_FIXED_TERM, DISABLE_TERM,
+    SET_PERIOD, SET_REGIONS, SET_CITY,
     SET_CRIME, SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
     SET_KBM, SET_PERIOD_KBM,
 
@@ -43,7 +44,7 @@ export const setTerm = (term)=>{
     }
 }
 
-export const setFixedTerm = (term)=>{
+/*export const setFixedTerm = (term)=>{
     return {
         type:SET_FIXED_TERM,
         term,
@@ -55,7 +56,7 @@ export const disableTerm = (disabled)=>{
         type:DISABLE_TERM,
         disabled,
     }
-}
+}*/
 
 export const setPeriod = (period)=>{
     return {

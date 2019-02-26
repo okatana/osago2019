@@ -1,6 +1,6 @@
 import watch from 'redux-watch'
 import {
-    setFixedTerm as setFixedTermAction,
+   // setFixedTerm as setFixedTermAction,
     setTerm as setTermAction,
     setPeriod as setPeriodAction,
     setAge as setAgeAction,
@@ -100,7 +100,7 @@ export default class CalcView{
 
     handleRegistrationDependencies(newVal, oldVal) {
         var term;  // = undefined
-        var fixedPeriod;
+       // var fixedPeriod;
         var period;
         var crime;
         var regions;
@@ -110,21 +110,21 @@ export default class CalcView{
             case "regRu":
 //                fixedTerm = 't12';  // 1 год
 //                term = 't12';
-                term = {fixed: false};
+                term = {fixed: true, value:'t10', disabled:true};
                 crime= {disabled:false};
                 period = {disabled: false};
                 regions = { disabled: false};
                 city = { disabled: false};
                 break;
             case "regNo":
-                term = {term: 't20', fixed: 't20'};  // до 20 дней
-                period = {value: null, disabled: true};
+                term = {term: 't20', fixed: true , disabled:false};  // до 20 дней
+                period = {value: null, disabled: true };
                 crime={disabled:false};
                 regions = { disabled: false};
                 city = { disabled: false};
                 break;
             case "regFo":
-                term = {fixed: false};
+                term = {fixed: false, disabled:false};
                 crime= {value: false, disabled:true}
                 period = {value: null, disabled: true};
                 regions = {value: null, disabled: true};
@@ -187,9 +187,9 @@ export default class CalcView{
         if (this.hasStateChanged(oldValue, value)) {    // проверка, отличается ли новое состояние от старого
 //            moreChanges = true // будем изменять
             switch (key) {
-                case 'fixedTerm' :
+                /*case 'fixedTerm' :
                     this.store.dispatch(setFixedTermAction(value))
-                    break;
+                    break;*/
                 case 'term' :
                     this.store.dispatch(setTermAction(value))
                     break;
@@ -346,7 +346,7 @@ export default class CalcView{
                 var obj = this.model.getDrivingstage(parameter);
                 console.log('view getOptions drivingstage  parameter='+parameter)
                 for (var key in obj) {
-                    options.push({value: key, label: key, selected: true});
+                    options.push({value: key, label: key});
                 }
                 break;
             case "kbm":

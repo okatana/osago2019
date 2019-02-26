@@ -108,10 +108,10 @@ export default class CalcModel {
         return this.age;
     }
     getDrivingstage(ageKey='de0', key=null){
-        console.log('>>>>>>getDrivingstage  ageKey='+ageKey)
-        console.log('>>>>>>getDrivingstage  key='+key)
+        //console.log('>>>>>>getDrivingstage  ageKey='+ageKey)
+        //console.log('>>>>>>getDrivingstage  key='+key)
         var age = this.getAge(ageKey);
-        console.log('+++>>>+++',age)
+       // console.log('+++>>>+++',age)
         if(key)
             return age.drivingstage[key];
         return age.drivingstage;

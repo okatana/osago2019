@@ -6,14 +6,17 @@ import {setDrivingstage} from "../../../../actions";
 export default class Drivingstage extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('drivingstage constructor props=', props)
+        console.warn('??????????drivingstage constructor props=', props)
         this.state = {
             selected: props.drivingstage.value,
             disabled: props.drivingstage.disabled,
         }
     }
     componentDidUpdate(prevProps) {
+        console.log('componentDidUpdate  drivingstage selected='+this.state.selected)
+
         if (this.state.disabled != this.props.drivingstage.disabled){
+            console.log('^^^^^^^^^^^^^^^^^^^^^^^^')
             this.setState({
                 selected: this.props.drivingstage.value,
                 disabled: this.props.drivingstage.disabled
@@ -32,6 +35,7 @@ export default class Drivingstage extends React.Component {
                                     options={options}
                                     placeholder="Выберите стаж водителя"
                                     assigned={(v) => this.props.setDrivingstage({value:v})}
+                                    assigned={this.change}
                                     selected={this.state.selected}
                                     enabled={!this.state.disabled}
                         />
