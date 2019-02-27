@@ -7,9 +7,12 @@ export default class RegistrationRG extends React.Component {
         super(props)
         console.warn('constructor props=', props)
         this.state = {
-            owner: {buttonChecked: "fiz"}
+            owner: {buttonChecked: "fiz"},
+
         }
     }
+
+
     getButtons() {
         return [
             {value: "regRu", label: "ТС зарегистрировано в России", checked: true},

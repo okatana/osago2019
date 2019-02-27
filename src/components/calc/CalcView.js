@@ -13,6 +13,7 @@ import {
     setRegions as setRegionsAction,
     setCity as setCityAction,
     setKbm,
+    //setRegistration,
 
 } from '../../actions'
 
@@ -105,11 +106,13 @@ export default class CalcView{
         var crime;
         var regions;
         var city;
+       // var registration;
 
         switch (newVal) {
             case "regRu":
 //                fixedTerm = 't12';  // 1 год
 //                term = 't12';
+              //  registration = {value:'regRu', checked: true}
                 term = {fixed: true, value:'t10', disabled:true};
                 crime= {disabled:false};
                 period = {disabled: false};
@@ -117,23 +120,25 @@ export default class CalcView{
                 city = { disabled: false};
                 break;
             case "regNo":
-                term = {term: 't20', fixed: true , disabled:false};  // до 20 дней
+              //  registration = {value:'regNo', checked: true}
+                term = {fixed: true, value:'t20', disabled:false}; // до 20 дней
                 period = {value: null, disabled: true };
                 crime={disabled:false};
                 regions = { disabled: false};
                 city = { disabled: false};
                 break;
             case "regFo":
+              //  registration = {value:'regFo', checked: true}
                 term = {fixed: false, disabled:false};
                 crime= {value: false, disabled:true}
-                period = {value: null, disabled: true};
-                regions = {value: null, disabled: true};
+               period = {value: null, disabled: true};
+                 regions = {value: null, disabled: true};
                 city = {value: null, disabled: true};
 
                 break;
             default:
                 //Только при переходе на "regFo" с "regRu" или с "regRu" нужно сбросить:
-                if (['t12', 't20'].indexOf(this.store.getState().term) >= 0)
+              if (['t12', 't20'].indexOf(this.store.getState().term) >= 0)
                     term = {value: null};
         }
         this.updateStates({
@@ -142,6 +147,7 @@ export default class CalcView{
             crime: crime,
             regions: regions,
             city: city,
+           // registration: registration,
         })
     }
     setPowerTCDependency(){
@@ -226,6 +232,9 @@ export default class CalcView{
                 case 'kbm' :
                     this.store.dispatch(setKbm(value))
                     break;
+               /* case 'registration' :
+                    this.store.dispatch(setRegistration(value))
+                    break;*/
                 default:
 //                    moreChanges = false;    // так ничего и не изменили
             }
@@ -261,7 +270,9 @@ export default class CalcView{
                 var obj = this.model.getTypeTC();
                 console.log('typeTC obj=', obj)
                 var owner = this.store.getState().owner;
-                console.log('owner='+owner);
+              //  var registr = this.store.getState().registration;
+              //  console.log('registr registr registr === === ', registr)
+             //   console.log('owner='+owner);
                 /* console.log("CalcView. getOptions() typeTC OBJ =");
                  console.dir(obj);*/
                 for (var key in obj) {
@@ -289,11 +300,11 @@ export default class CalcView{
             case "term":
                 /*  console.log("OsagoView.getOptions term this.params.fixedTerm=" + this.params.fixedTerm);*/
                 var obj = this.model.getTerm();
-                if (this.store.getState().term.fixedTerm) {  //это key или null
+                if (this.store.getState().term.fixed) {  //это key или null
                     //для фиксированного key формируем единствееную опцию
-                    var key = this.store.getState().term.fixedTerm;
-                    if (obj.hasOwnProperty(key)) {
-                        options.push({value: key, label: obj[key].label, selected: true});
+                    var val = this.store.getState().term.value;
+                    if (val) {
+                        options.push({value: val, label: obj[val].label, selected: true});
                     }
                 } else {
                     for (var key in obj) {

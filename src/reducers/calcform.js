@@ -132,7 +132,7 @@ export function ageReducer (state = {value: 'de0', disabled: false},  action) {
     }
 }
 
-export function cityReducer (state = {value: null, disabled: false}, action) {
+export function cityReducer (state = {value: [1], disabled: false}, action) {
     switch (action.type) {
         case SET_CITY:
             return {...state, ...action.city}

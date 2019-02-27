@@ -77,9 +77,15 @@ export default class Calculator{
     getTypeTC() {
         var tTC=this.params.typeTC;
         var reg=this.params.regions;
+        console.log('*** *** tTC=',tTC)
+        console.log('*** *** reg=',reg)
+        if(reg==null){
+
+            reg = 'r99'
+        }
         var tb =  this.model.getBaseTariff(tTC,reg)
 
-        return this.typeTC ? tb :null //this.model.getBaseTariff(this.params.typeTC,this.params.regions) : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
+        return this.typeTC ? tb : null;
     }
     getPowerTC() {
         console.log('getPowerTC() this.params.powerTC=', this.params.powerTC)
@@ -140,6 +146,9 @@ export default class Calculator{
     calcPremium(){
         let premium=1
         for (let [key, value] of Object.entries(this.factors)) {
+            console.log('++++ key='+key)
+            console.log('++++ value='+value)
+
             if (value) {
                 premium*=value
             }
@@ -148,7 +157,7 @@ export default class Calculator{
         return Math.round(premium*100)/100
     }
 
-    calcTypeTCPremium(){
+    /*calcTypeTCPremium(){
          const {typeTC} = this.state
         console.log('this.state>>>typeTC'+typeTC)
          /* const {st_group} = regions
@@ -159,8 +168,8 @@ export default class Calculator{
         if(ssObj && buildingType){
             return buildingType==='wood'? ssObj.wood : ssObj.stone;
         }
-       */ return 10;
-    }
+       return 10;* /
+}*/
 
 
 }

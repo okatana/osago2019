@@ -5,6 +5,7 @@ import { setRegistration } from '../../../../actions'
 
 const mapStateToProps = (state, props) => {
     return {
+       // registration: state.registration,
     }
 }
 const mapDispatchToProps = (dispatch, props) =>

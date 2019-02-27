@@ -25,5 +25,5 @@ store.subscribe(()=>{
 
 //console.log('store  '+store.getState())
 ReactDOM.render(<App store={store} />,
-    document.getElementById('content')
+    document.getElementById('osagoContent')
 )

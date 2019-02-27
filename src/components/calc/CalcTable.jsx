@@ -84,7 +84,6 @@ export default class CalcTable extends React.Component{
 
 
     calcPremium(){
-
         this.props.setPremium(calculator.calcPremium())
     }
 
