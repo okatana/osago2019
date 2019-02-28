@@ -101,6 +101,9 @@ export default class Calculator{
         return this.term ? this.term.coeff : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
     }
     getCity() {
+        if(this.params.registration==='regFo'){
+            return 1.7
+        }
         var cityKoeff = this.model.getCityCoeff(this.params.regions, this.params.city.value, this.params.typeTC);
         return cityKoeff ? cityKoeff : null;  //вернет null если физ лицо, Россия, на 1 год, ТС кат В
 
@@ -154,6 +157,10 @@ export default class Calculator{
                 premium*=value
             }
         }
+        var maxPremium = 3*this.factors.typeTC* this.factors.regions;
+
+        if(premium>maxPremium)
+            premium = maxPremium
 
         return Math.round(premium*100)/100
     }

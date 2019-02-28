@@ -36,6 +36,11 @@ export default class CalcTable extends React.Component{
     }
 
     calculate() {
+        //этот метод для заявок, его нельзя удалять, только комментировать для отладки. Для боевой - расскомментировать обязательно!
+        if(global.getTariffValues)
+            global.getTariffValues(this.props)
+        else
+            console.log("getTariffValues undefined")
         calculator.calculate(this.props, this.getFactorKeys())
         const {typeTC,powerTC,term, period,city,crime,kbm, limit,trailer,drivingstage,} = calculator.getFactors();
 
