@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import {premiumReducer, errorMessageReducer} from './premium'
 import {ownerReducer, registrationReducer, typeTCReducer,trailerReducer, powerTCReducer,
         termReducer,periodReducer, regionsReducer, cityReducer,
-        ageReducer,drivingstageReducer,limitReducer,crimeReducer,kbmReducer,periodKbmReducer
+        ageReducer,drivingstageReducer,limitReducer,crimeReducer,kbmReducer,//periodKbmReducer
 
 
 } from './calcform'
@@ -25,7 +25,7 @@ const appReducer = combineReducers({
     age: ageReducer,
     drivingstage: drivingstageReducer,
     kbm: kbmReducer,
-    periodKbm: periodKbmReducer,
+    //periodKbm: periodKbmReducer,
 })
 
 export default appReducer

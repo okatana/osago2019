@@ -35,7 +35,6 @@ export default class Drivingstage extends React.Component {
                                     options={options}
                                     placeholder="Выберите стаж водителя"
                                     assigned={(v) => this.props.setDrivingstage({value:v})}
-                                    assigned={this.change}
                                     selected={this.state.selected}
                                     enabled={!this.state.disabled}
                         />

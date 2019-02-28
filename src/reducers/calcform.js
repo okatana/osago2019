@@ -3,7 +3,7 @@ import {
     SET_TERM, //SET_FIXED_TERM, DISABLE_TERM,
     SET_PERIOD, SET_REGIONS, SET_CITY,
     SET_CRIME, SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
-    SET_KBM, SET_PERIOD_KBM,
+    SET_KBM,// SET_PERIOD_KBM,
 } from '../actions/actionTypes'
 
 
@@ -132,7 +132,7 @@ export function ageReducer (state = {value: 'de0', disabled: false},  action) {
     }
 }
 
-export function cityReducer (state = {value: [1], disabled: false}, action) {
+export function cityReducer (state = {value: 'Москва', disabled: false}, action) {
     switch (action.type) {
         case SET_CITY:
             return {...state, ...action.city}
@@ -154,7 +154,7 @@ export function drivingstageReducer (state = {value: 'СТАЖ 0', disabled: fal
     }
 }
 
-export function kbmReducer (state = {value: 'kbm1', fixed: false}, action) {
+export function kbmReducer (state = {value: 'kbm15', fixed: false}, action) {
     switch (action.type) {
         case SET_KBM:
             return {...state, ...action.kbm}
@@ -163,7 +163,7 @@ export function kbmReducer (state = {value: 'kbm1', fixed: false}, action) {
     }
 }
 
-export function periodKbmReducer (state = '0', action) {
+/*export function periodKbmReducer (state = '0', action) {
     switch (action.type) {
         case SET_PERIOD_KBM:
             return action.periodKbm
@@ -171,4 +171,4 @@ export function periodKbmReducer (state = '0', action) {
         default:
             return state
     }
-}
+}*/

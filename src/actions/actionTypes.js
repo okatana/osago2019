@@ -27,7 +27,7 @@ export const SET_LIMIT = 'SET_LIMIT'
 export const SET_AGE = 'SET_AGE'  //минимальный возраст водителя
 export const SET_DRIVINGSTAGE = 'SET_DRIVINGSTAGE'  //СТАЖ водителя
 export const SET_KBM= 'SET_KBM'
-export const SET_PERIOD_KBM= 'SET_PERIOD_KBM'
+//export const SET_PERIOD_KBM= 'SET_PERIOD_KBM'
 
 
 

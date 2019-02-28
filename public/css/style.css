@@ -101,3 +101,17 @@ select:disabled{
 /***********************/
 
 
+.kbmWrapper{
+ width:100%;
+  /* */
+}
+.kbmWrapper .formElement{
+
+  width:100%;
+}
+.kbmWrapper a{
+  margin-top:-3em;
+  margin-right:5px;
+  float:right;
+  text-align: center;
+}

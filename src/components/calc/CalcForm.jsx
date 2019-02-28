@@ -14,7 +14,7 @@ import ConnectedLimit from './calcform/containers/ConnectedLimit.jsx'
 import ConnectedAge from './calcform/containers/ConnectedAge.jsx'
 import ConnectedDrivingstage from './calcform/containers/ConnectedDrivingstage.jsx'
 import ConnectedKbm from './calcform/containers/ConnectedKbm.jsx'
-import ConnectedPeriodKbm from './calcform/containers/ConnectedPeriodKbm.jsx'
+//import ConnectedPeriodKbm from './calcform/containers/ConnectedPeriodKbm.jsx'
 import {context} from '../App.jsx'
 
 export default class CalcForm extends React.Component {
@@ -40,7 +40,7 @@ export default class CalcForm extends React.Component {
                 <div><ConnectedAge context={context} /></div>
                 <div><ConnectedDrivingstage context={context} /></div>
                 <div><ConnectedKbm context={context} /></div>
-                <div><ConnectedPeriodKbm context={context} /></div>
+                {/*<div><ConnectedPeriodKbm context={context} /></div>*/}
             </div>
          )
     }

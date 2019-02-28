@@ -11,6 +11,20 @@ class BaseElement extends React.Component {
         if (exclude.length == 0)
             return this.props;
         var props0 = {};
+
+        //этот костыль из-за IE кот. не поддерживает entries   --begin--
+        if (!Object.entries)
+            Object.entries = function( obj ){
+                var ownProps = Object.keys( obj ),
+                    i = ownProps.length,
+                    resArray = new Array(i); // preallocate the Array
+                while (i--)
+                    resArray[i] = [ownProps[i], obj[ownProps[i]]];
+
+                return resArray;
+            };
+         //   --end--
+
         for (let [key, value] of Object.entries(this.props)) {
             if (exclude.indexOf(key) == -1)
                 props0[key] = value;

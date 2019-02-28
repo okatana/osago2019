@@ -60,7 +60,7 @@ export default class Calculator{
         this.factors.crime = this.getCrime();
         this.factors.trailer = this.getTrailer();
         this.factors.limit = this.getLimit();
-        this.factors.kbm = this.getKbm();
+        this.factors.kbm = this.getKbm().toFixed(2);
 
 
     }
@@ -137,7 +137,8 @@ export default class Calculator{
     }
 
     getKbm(){
-        return   this.model.getKbmCoeff(this.params.kbm, this.params.periodKbm);
+       // return   this.model.getKbmCoeff(this.params.kbm, this.params.periodKbm);
+        return   this.model.getKbmCoeff(this.params.kbm);
     }
     /*getCrime() {
         console.log('getCrime() this.params.crime=', this.params.crime)

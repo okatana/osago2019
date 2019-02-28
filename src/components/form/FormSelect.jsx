@@ -14,7 +14,7 @@ class FormSelect extends BaseElement {
 
     render() {
         return <div className="formElement" style={{overflow: "auto"}}>
-            <div className="no-padding-left no-border col-lg-3">
+            <div className="no-padding-left no-border col-lg-4">
               <label htmlFor={this.props.id} {...this.props.labelProps}>
                 {this.props.formlabel}
             </label>

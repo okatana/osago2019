@@ -66,9 +66,10 @@ export default class CalcModel {
         return null;
     }
 
-    getKbmCoeff(kbmKey, periodKbmKey){  //this.params.kbm, this.params.periodKbm
+    getKbmCoeff(kbmKey, periodKbmKey=null){  //periodKbmKey - не используется
         if(this.kbm[kbmKey]){
-            return this.kbm[kbmKey].periodKbm[periodKbmKey]
+           // return this.kbm[kbmKey].periodKbm[periodKbmKey]
+            return this.kbm[kbmKey].coeff;
 
         }else{
             return null
@@ -122,14 +123,14 @@ export default class CalcModel {
             return this.kbm[key];
         return this.kbm;
     }
-    getPeriodKbm(kbmKey, key=null){
+   /* getPeriodKbm(kbmKey, key=null){
         console.log('>>>>>>getPeriodKbm  kbmKey'+kbmKey)
         console.log('>>>>>>getPeriodKbm  key'+key)
         var kbm = this.getKbm(kbmKey);
         if(key)
             return kbm.periodKbm[key];
         return kbm.periodKbm;
-    }
+    }*/
 }
 
 

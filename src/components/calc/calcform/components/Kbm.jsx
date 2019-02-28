@@ -24,13 +24,13 @@ export default class Kbm extends React.Component {
         console.log('kbm options=', options)
 
         return (
-            <FormSelect name="kbm" formlabel="КБМ"
+           <div className="kbmWrapper"> <FormSelect name="kbm" formlabel="КБМ"
                         labelProps={{className: "col-lg-12 label label-info mandatory-parameter"}}
                         options={options}
                         placeholder="Выберите свой коэффициент КБМ"
                         assigned={(v) => this.props.setKbm({value:v})}
                         selected={this.state.selected}
-            />
+            /><a href="https://kbm-rsa.info/">Узнать <br/>свой КБМ <br/>по базе РСА</a></div>
         )
     }
 }

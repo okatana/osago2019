@@ -7,7 +7,7 @@ import {
     setDrivingstage as setDrivingstageAction,
     setCrime as setCrimeAction,
     setLimit as setLimitAction,
-    setPeriodKbm as setPeriodKbmAction,
+   // setPeriodKbm as setPeriodKbmAction,
     setTrailer as setTrailerAction,
     setPowerTC as setPowerTCAction,
     setRegions as setRegionsAction,
@@ -55,18 +55,28 @@ export default class CalcView{
             this.handlePeriodKbmDependencies()
         }))
 
+        this.setRequestValues();
 
     }
 
     handlePeriodKbmDependencies(){
         var owner = this.store.getState().owner;
         var limit = this.store.getState().limit.value;
+        var age =this.store.getState().age;
+        var drivingstage=  this.store.getState().drivingstage;
         if (owner=='fiz' && limit) {
             var kbm = {value:'kbm5', fixed:true}
         } else {
             var kbm = {fixed:false}
         }
-        this.updateStates({kbm:kbm})
+        if(limit){
+             age = {disabled: true, value:null}
+             drivingstage= {disabled: true, value:null}
+        }else{
+            age = {disabled: false}
+            drivingstage= {disabled: false}
+        }
+        this.updateStates({kbm:kbm, age:age, drivingstage:drivingstage})
     }
 
     handleTypeTCDependencies(newVal, oldVal) {
@@ -368,14 +378,125 @@ export default class CalcView{
                 }
                 break;
 
-            case "periodKbm":
+           /* case "periodKbm":
                 var obj = this.model.getPeriodKbm(parameter);
 
                 for (var key in obj) {
                     options.push({value: key, label: key, selected: true});
                 }
-                break;
+                break;*/
         }
         return options;
+    }
+    //этот метод для заявок, его нельзя удалять, только комментировать для отладки. Для боевой - расскомментировать обязательно!
+    setRequestValues0() {
+        console.log('setRequestValues  this.store.premium', this.store.premium)
+        /*{this.state.premium ?  this.state.premium : 'Мало данных для расчета'  }
+
+         $('input[name="tariff_values"]').val('15488.12');
+         $('input[name="request_values"]').val(request_values);
+         $('input[name="premium_values"]').val(premium);*/
+
+    }
+
+    setRequestValues() {
+      //  console.log('setRequestValues  this.store.premium', this.store.premium)
+        const {owner, typeTC, registration, term,period,kbm,region,city,limit,age,drivingstage,trailer, premium} = this.store.getState()
+console.log('setRequestValues premium',premium)
+console.log('setRequestValues owner',owner)//fiz
+console.log('setRequestValues typeTC',typeTC)//tc22
+console.log('setRequestValues registration',registration)//regRu
+console.log('setRequestValues term',term)//
+console.log('setRequestValues period',period)
+console.log('setRequestValues kbm',kbm)
+console.log('setRequestValues region',region)
+console.log('setRequestValues city',city)
+console.log('setRequestValues limit',limit)
+console.log('setRequestValues age',age)
+console.log('setRequestValues drivingstage',drivingstage)
+console.log('setRequestValues trailer',trailer)
+
+        /* switch (this.params.registration) {
+         case "regRu":
+         registration = ' ТС зарегистрировано в России; ';
+         break;
+         case "regNo":
+         registration = ' ТС зарегистрировано в  иностранном государстве; ';
+         break;
+         case "regFo":
+         registration = " ТС следует к месту регистрации; ";
+         break;
+         }
+         var typeTC = this.model.typeTC;
+         var powerTC = this.model.powerTC;
+         var term = this.model.term;
+         var period = this.model.period;
+         var kbm = this.model.kbm;
+         var regions = this.model.regions;
+         var driving_experience = this.model.driving_experience;
+
+
+
+         typeTC_customer = params.typeTC ? (typeTC[params.typeTC].label+'; ') : 'Не выбрано; ';
+
+         powerTC_customer=  params.powerTC ? (powerTC[params.powerTC].label+'; ') : 'Не выбрано; ';
+
+         owner_customer = ((params.owner == 'fiz') ? ' физ.лицо; ' : ' юр.лицо; ');
+
+         term_customer= params.term  ? (term[params.term].label+'; ') : 'Не выбрано; ';
+         period_customer=  params.period ? (period[params.period].label+'; ') : 'Не выбрано; ';
+         kbm_customer=  params.kbm ? (kbm[params.kbm].label+'; ') : 'Не выбрано; ';
+         region_customer=  params.regions ? (regions[params.regions].label+'; ') : 'Не выбрано; ';
+         city_customer=  params.city ? (params.city + '; ') : 'Не выбрано; ';
+
+         tariff_values_customer = (params.typeTC && params.regions) ? typeTC[params.typeTC][regions[params.regions].st_group]+'; ' : 'Не выбрано; ';
+
+         limit_customer=  params.limit == true ? 'ДА; ' : 'НЕТ; ';
+         crime_customer=  params.crime == true ? 'ДА; ' : 'НЕТ; ';
+         driving_experience_customer= params.driving_experience  ? (driving_experience[params.driving_experience].label+'; ') : 'Не выбрано; ';
+         trailer_customer = (params.trailer ? 'ДА; ': 'НЕТ; ');*/
+        var str ='<table>' +
+            '<tbody>' +
+            '<tr>' +
+            '<th>Владелец:</th>' +
+            '<th>Регистрация ТС:</th>' +
+            '<th>Тип ТС:</th>' +
+            '<th>Прицеп:</th>' +
+            '<th>Мощность ТС:</th>' +
+            '<th>Срок договора:</th>' +
+            '<th>Период использования ТС:</th>' +
+            '<th>КБМ:</th>' +
+            '<th>Регион:</th>' +
+            '<th>Город:</th>' +
+            '<th>Имеются грубые нарушения:</th>' +
+            '<th>Кол-во водителей ограничено:</th>' +
+            '<th>Минимальный возраст/стаж:</th>' +
+            '</tr>' +
+            '</tbody>' +
+            '</table>';
+
+
+
+
+
+
+        /*     request_values += 'Владелец:' + owner_customer;
+         request_values += 'Регистрация ТС:' + registration;
+         request_values += 'Тип ТС:' + typeTC_customer;
+         request_values += 'Прицеп:' + trailer_customer;
+         request_values += 'Мощность ТС:' + powerTC_customer;
+         request_values += 'Срок договора:' + term_customer;
+         request_values += 'Период использования ТС:' + period_customer;
+         request_values += 'КБМ:' + kbm_customer;
+         request_values += 'Регион:' + region_customer;
+         request_values += 'Город:' + city_customer;
+         request_values += 'Имеются грубые нарушения:' + crime_customer;
+         request_values += 'Кол-во водителей ограничено:' + limit_customer;
+         request_values += 'Минимальный возраст/стаж:' + driving_experience_customer;
+
+
+         $('input[name="tariff_values"]').val(tariff_values_customer);
+         $('input[name="request_values"]').val(request_values);
+         $('input[name="premium_values"]').val(premium);*/
     }
 }
