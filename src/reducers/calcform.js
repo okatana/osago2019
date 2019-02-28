@@ -2,7 +2,8 @@ import {
     SET_OWNER, SET_REGISTRATION, SET_TYPETC, SET_TRAILER, SET_POWERTC,
     SET_TERM, //SET_FIXED_TERM, DISABLE_TERM,
     SET_PERIOD, SET_REGIONS, SET_CITY,
-    SET_CRIME, SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
+    //SET_CRIME,
+    SET_LIMIT, SET_AGE, SET_DRIVINGSTAGE,
     SET_KBM,// SET_PERIOD_KBM,
 } from '../actions/actionTypes'
 
@@ -37,7 +38,7 @@ export function typeTCReducer (state = 'tc22', action) {
             return state
     }
 }
-export function crimeReducer (state = {value: false, disabled: false}, action) {
+/*export function crimeReducer (state = {value: false, disabled: false}, action) {
     switch (action.type) {
         case SET_CRIME:
             //return {...state, ...{value:action.crime}}
@@ -46,7 +47,8 @@ export function crimeReducer (state = {value: false, disabled: false}, action) {
         default:
             return state
     }
-}
+}*/
+
 export function powerTCReducer (state = {value: 'p0', disabled: false}, action) {
     switch (action.type) {
         case SET_POWERTC:

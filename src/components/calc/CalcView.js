@@ -5,7 +5,7 @@ import {
     setPeriod as setPeriodAction,
     setAge as setAgeAction,
     setDrivingstage as setDrivingstageAction,
-    setCrime as setCrimeAction,
+   // setCrime as setCrimeAction,
     setLimit as setLimitAction,
    // setPeriodKbm as setPeriodKbmAction,
     setTrailer as setTrailerAction,
@@ -212,9 +212,9 @@ export default class CalcView{
                  case 'period' :
                     this.store.dispatch(setPeriodAction(value))
                     break;
-                case 'crime' :
+               /* case 'crime' :
                     this.store.dispatch(setCrimeAction(value))
-                    break;
+                    break;*/
                 case 'trailer' :
                     this.store.dispatch(setTrailerAction(value))
                     break;
@@ -411,7 +411,7 @@ console.log('setRequestValues period',period)
 console.log('setRequestValues kbm',kbm)
 console.log('setRequestValues region',region)
 console.log('setRequestValues city',city)
-console.log('setRequestValues limit',limit)
+//console.log('setRequestValues limit',limit)
 console.log('setRequestValues age',age)
 console.log('setRequestValues drivingstage',drivingstage)
 console.log('setRequestValues trailer',trailer)

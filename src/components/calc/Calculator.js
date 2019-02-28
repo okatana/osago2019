@@ -57,7 +57,7 @@ export default class Calculator{
         this.factors.period = this.getPeriod();
         this.factors.city = this.getCity();
         this.factors.drivingstage = this.getDrivingstage();
-        this.factors.crime = this.getCrime();
+      //  this.factors.crime = this.getCrime();
         this.factors.trailer = this.getTrailer();
         this.factors.limit = this.getLimit();
         this.factors.kbm = this.getKbm().toFixed(2);
@@ -92,10 +92,10 @@ export default class Calculator{
         return this.powerTC ? this.powerTC.coeff : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
     }
 
-    getCrime() {
+   /* getCrime() {
         console.log('getCrime() this.params.crime=', this.params.crime)
         return (this.params.crime.value==true)? 1.5 : null;//стр. 19 п.9 коэфф КН = 1.5
-    }
+    }*/
     getTerm() {
         console.log('getTerm() this.params.term=', this.params.term)
         return this.term ? this.term.coeff : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
