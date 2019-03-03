@@ -5,7 +5,7 @@ import FormCheckbox1 from "../../../form/FormCheckbox1.jsx";
 export default class Limit extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+       // console.warn('constructor props=', props)
         this.state = {
            // limit: {selected: false,enabled:true,
             selected: props.limit.value
@@ -25,7 +25,7 @@ componentDidUpdate(prevProps) {
         this.setState({selected:this.props.limit.value})
 }
     render() {
-        console.log('**** limit'+this.limit)
+
         return (
 
             <FormCheckbox1 name="limit" formlabel="Количество водителей ограничено"

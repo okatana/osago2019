@@ -6,7 +6,7 @@ import {setKbm} from "../../../../actions";
 export default class Kbm extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+    //    console.warn('constructor props=', props)
         this.state = {
             selected: props.kbm.value,
 
@@ -21,7 +21,7 @@ export default class Kbm extends React.Component {
                 return elem.value === this.props.kbm.value
             }, this)
         }
-        console.log('kbm options=', options)
+     //   console.log('kbm options=', options)
 
         return (
            <div className="kbmWrapper"> <FormSelect name="kbm" formlabel="КБМ"

@@ -20,7 +20,7 @@ let store = createStore(appReducer, composeEnhancers(applyMiddleware(invariant()
 //subscribeCalculator(store)
 
 store.subscribe(()=>{
-    console.log('state changed:', store.getState())
+   // console.log('state changed:', store.getState())
 })
 
 //console.log('store  '+store.getState())

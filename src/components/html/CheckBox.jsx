@@ -25,7 +25,7 @@ class CheckBox extends BaseElement{
         this.setState({checked:newProps.selected});
     }
     render(){
-        console.log('***checkbox '+this.props.name);
+       // console.log('***checkbox '+this.props.name);
         return <span>
       <input type="checkbox" {...super.sanitizeProps()}
              //value={!!this.state.checked}

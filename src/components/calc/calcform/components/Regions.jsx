@@ -6,7 +6,7 @@ import {setRegions} from "../../../../actions";
 export default class Regions extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+      //  console.warn('constructor props=', props)
         this.state = {
             selected: props.regions.value,
             disabled: props.regions.disabled,
@@ -24,7 +24,7 @@ export default class Regions extends React.Component {
     render() {
 
                     const options = this.state.disabled ? [] :calcView.getOptions("regions")
-//                    console.log('options=', options)
+                 //  console.log('options=', options)
                     return (
                         <FormSelect name="regions" formlabel="Регион регистрации ТС"
                                     labelProps={{className: "col-lg-12 label label-info mandatory-parameter"}}

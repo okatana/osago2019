@@ -4,7 +4,7 @@ import {calculator} from "./App.jsx";
 export default class Premium extends React.Component{
     constructor(props){
         super(props)
-        console.warn('constructor props=', props)
+        //console.warn('constructor props=', props)
     }
 
     render(){

@@ -5,7 +5,7 @@ import FormRadioGroup from "../../../form/FormRadioGroup.jsx";
 export default class RegistrationRG extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+       // console.warn('constructor props=', props)
         this.state = {
             owner: {buttonChecked: "fiz"},
 

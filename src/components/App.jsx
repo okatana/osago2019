@@ -22,7 +22,7 @@ const calculator = new Calculator(calcModel)
 
 const App = ({ store }) =>{
     /*calculator.setSubscribe(store)*/
-    console.log('APP store=', store)
+   // console.log('APP store=', store)
     calcView.init(store)
     return(
 

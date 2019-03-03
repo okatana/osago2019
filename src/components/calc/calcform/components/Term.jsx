@@ -6,7 +6,7 @@ import {setTerm} from "../../../../actions";
 export default class Term extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+      //  console.warn('constructor props=', props)
         this.state = {
             selected: props.term.value,
             disabled: props.term.disabled,

@@ -5,7 +5,7 @@ export default class Calculator{
     }
 
     calculate(formParameters, factorKeys){
-        console.log('**********calculate  formParameters=', formParameters)
+       // console.log('**********calculate  formParameters=', formParameters)
         this.params = formParameters;
         this.factors = this.getDefaultFactors(factorKeys);
 
@@ -26,7 +26,7 @@ export default class Calculator{
     }
 
     getFactors() {
-        console.warn('this.factors', this.factors)
+       // console.warn('this.factors', this.factors)
         return this.factors;
     }
 
@@ -43,7 +43,7 @@ export default class Calculator{
 
         this.kbm = this.model.getKbm(this.params.kbm);  // value ??
 
-        console.log('loadFromModel() this.params=', this.params)
+       // console.log('loadFromModel() this.params=', this.params)
 //        this.driving_experience = this.model.getDriving_experience(this.params.driving_experience); // value ??
     }
 
@@ -77,8 +77,8 @@ export default class Calculator{
     getTypeTC() {
         var tTC=this.params.typeTC;
         var reg=this.params.regions;
-        console.log('*** *** tTC=',tTC)
-        console.log('*** *** reg=',reg)
+     //   console.log('*** *** tTC=',tTC)
+     //   console.log('*** *** reg=',reg)
         if(reg==null){
 
             reg = 'r99'
@@ -88,7 +88,7 @@ export default class Calculator{
         return this.typeTC ? tb : null;
     }
     getPowerTC() {
-        console.log('getPowerTC() this.params.powerTC=', this.params.powerTC)
+      //  console.log('getPowerTC() this.params.powerTC=', this.params.powerTC)
         return this.powerTC ? this.powerTC.coeff : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
     }
 
@@ -97,7 +97,7 @@ export default class Calculator{
         return (this.params.crime.value==true)? 1.5 : null;//стр. 19 п.9 коэфф КН = 1.5
     }*/
     getTerm() {
-        console.log('getTerm() this.params.term=', this.params.term)
+      //  console.log('getTerm() this.params.term=', this.params.term)
         return this.term ? this.term.coeff : null;//вернет null если физ лицо, Россия, на 1 год, ТС кат В
     }
     getCity() {
@@ -114,9 +114,9 @@ export default class Calculator{
     }
 
     getTrailer(){
-        console.log('getTrailer() this.params.owner=', this.params.owner)
-        console.log('getTrailer() this.params.typeTC=', this.params.typeTC)
-        console.log('getTrailer() this.params.trailer=', this.params.trailer)
+       // console.log('getTrailer() this.params.owner=', this.params.owner)
+       // console.log('getTrailer() this.params.typeTC=', this.params.typeTC)
+       // console.log('getTrailer() this.params.trailer=', this.params.trailer)
         if(this.params.trailer.value) {
             if (this.params.owner == 'yur' && (this.params.typeTC == 'tc21' || this.params.typeTC == 'tc23')) {
                 return 1.16;// стр.18 п.6
@@ -135,7 +135,7 @@ export default class Calculator{
         return 1;
     }
     getPeriod() {
-        console.log('getPeriod() this.params.period=', this.params.period)
+       // console.log('getPeriod() this.params.period=', this.params.period)
         return this.period ? this.period.coeff : null;
     }
 
@@ -144,14 +144,14 @@ export default class Calculator{
         return   this.model.getKbmCoeff(this.params.kbm);
     }
     /*getCrime() {
-        console.log('getCrime() this.params.crime=', this.params.crime)
+        Qconsole.log('getCrime() this.params.crime=', this.params.crime)
         return this.crime ? this.crime.coeff : null;
     }*/
     calcPremium(){
         let premium=1
         for (let [key, value] of Object.entries(this.factors)) {
-            console.log('++++ key='+key)
-            console.log('++++ value='+value)
+           // console.log('++++ key='+key)
+           // console.log('++++ value='+value)
 
             if (value) {
                 premium*=value
@@ -178,6 +178,55 @@ export default class Calculator{
         }
        return 10;* /
 }*/
+ getTariffObj(props){
+     var owner = props.owner=='fiz' ? 'физ.лицо':'юр.лицо';
+     var typTC = this.model.getTypeTC(props.typeTC).label;
+     var trailer = props.trailer.value ? 'да':'нет'
+     var powerTC = this.model.getPowerTC(props.powerTC).label;
+     var term = this.model.getTerm(props.term).label;
+     var period = this.model.getPeriod(props.period).label;
+     var kbm = this.model.getKbm(props.kbm).label;
+     var limit = props.limit ? 'да, ограничено' : "нет, не ограничено";
+     var drivingAge = props.age ? this.model.getAge(props.age).label:'не выбрано';
+     var drivingStage = props.age ? this.model.getDrivingstage(props.age, props.drivingstage).label:'не выбрано';
 
+     var str = '<table>' +
+         '<tbody>' +
+         '<tr>' +
+         '<th>Владелец:</th>' +
+         '<th>Тип ТС:</th>' +
+         '<th>Прицеп:</th>' +
+         '<th>Мощность ТС:</th>' +
+         '<th>Срок договора:</th>' +
+         '<th>Период использования ТС:</th>' +
+         '<th>КБМ:</th>' +
+         '<th>Кол-во водителей ограничено:</th>' +
+         '<th>Минимальный возраст/стаж:</th>' +
+         '</tr>' +
+         '<tr>' +
+         '<td>'+owner+'</td>' +
+         '<td>'+typTC+'</td>' +
+         '<td>'+trailer+'</td>' +
+         '<td>'+powerTC+'</td>' +
+         '<td>'+term+'</td>' +
+         '<td>'+period+'</td>' +
+         '<td>'+kbm+'</td>' +
+         '<td>'+limit+'</td>' +
+         '<td>'+drivingAge+'  '+drivingStage+'</td>' +
+         '</tr>' +
+         '</tbody>' +
+         '</table>';
+
+
+     return {baseTariff:this.model.getBaseTariff(props.typeTC, props.regions),
+             region:this.model.getRegions(props.regions).label,
+             city:  props.city.value,
+             values:str,
+             premium: this.calcPremium()
+
+
+
+             }
+ }
 
 }

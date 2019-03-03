@@ -6,7 +6,7 @@ import FormCheckbox1 from "../../../form/FormCheckbox1.jsx";
 export default class Trailer extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+      //  console.warn('constructor props=', props)
         this.state = {
             selected: props.trailer.value
         }

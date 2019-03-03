@@ -6,7 +6,7 @@ import {setTypeTC} from "../../../../actions";
 export default class TypeTC extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+       // console.warn('constructor props=', props)
         this.state = {
             selected: props.typeTC
         }

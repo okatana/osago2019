@@ -182,7 +182,7 @@ export default class CalcView{
      * Обновить состояния из this.statesToUpdate в Redux store
      */
     updateStates(states) {
-        console.warn('updateStates(): ', states)
+       // console.warn('updateStates(): ', states)
         for (let [key, value] of Object.entries(states)) {
             if (value !== undefined) {  //Если value === undefined, то обновлять не чего
                 this.updateState(key, value)
@@ -274,11 +274,11 @@ export default class CalcView{
 
     getOptions(name, parameter = null) {
         var options = [];
-        console.log('CalcView.getOptions() name='+name)
+       // console.log('CalcView.getOptions() name='+name)
         switch (name) {
             case "typeTC":
                 var obj = this.model.getTypeTC();
-                console.log('typeTC obj=', obj)
+              //  console.log('typeTC obj=', obj)
                 var owner = this.store.getState().owner;
               //  var registr = this.store.getState().registration;
               //  console.log('registr registr registr === === ', registr)
@@ -348,7 +348,7 @@ export default class CalcView{
                 break;
             case "city":
                 var obj = this.model.getCity(parameter);
-                console.log('view getOptions city parameter='+parameter)
+               // console.log('view getOptions city parameter='+parameter)
                 /* console.log('OsagoView.getOptions name=city, parameter=' + parameter);
                  console.log(obj);*/
                 for (var key in obj) {
@@ -366,7 +366,7 @@ export default class CalcView{
 
             case "drivingstage":
                 var obj = this.model.getDrivingstage(parameter);
-                console.log('view getOptions drivingstage  parameter='+parameter)
+            //    console.log('view getOptions drivingstage  parameter='+parameter)
                 for (var key in obj) {
                     options.push({value: key, label: key});
                 }

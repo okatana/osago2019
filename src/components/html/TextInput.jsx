@@ -37,7 +37,7 @@ class TextInput extends BaseElement {
         if (this.props.assigned) {
             var error = this.validate(this.state.value);
             if (error) {
-                console.error(error);
+             //   console.error(error);
                 this.setState({error: error});
             } else
                 this.props.assigned(this.convert(this.state.value));

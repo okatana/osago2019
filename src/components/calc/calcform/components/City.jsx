@@ -5,7 +5,7 @@ import {calcView} from '../../../App.jsx'
 export default class City extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('city constructor props=', props)
+       // console.warn('city constructor props=', props)
         this.state = {
             selected: props.city.value,
             disabled: props.city.disabled,

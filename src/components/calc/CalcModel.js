@@ -57,7 +57,7 @@ export default class CalcModel {
         return null;
     }
     getDrivingstageCoeff(ageKey, drivingstageName){
-        console.log('this.age[ageKey] ',this.age[ageKey])
+      //  console.log('this.age[ageKey] ',this.age[ageKey])
         if(this.age[ageKey]){
             var str = this.age[ageKey].drivingstage[drivingstageName]
             if(str!=undefined) {
@@ -103,7 +103,7 @@ export default class CalcModel {
 
     getAge(key=null){
 
-        console.log('>>>>>>getAge  key='+key)
+     //   console.log('>>>>>>getAge  key='+key)
         if(key)
             return this.age[key];
         return this.age;

@@ -6,7 +6,7 @@ import {setPowerTC} from "../../../../actions";
 export default class PowerTC extends React.Component {
     constructor(props) {
         super(props)
-        console.warn('constructor props=', props)
+      //  console.warn('constructor props=', props)
         this.state = {
             selected: props.powerTC.value,
             disabled: props.powerTC.disabled,
@@ -16,7 +16,7 @@ export default class PowerTC extends React.Component {
     componentDidUpdate(prevProps) {
 
         if (this.state.disabled != this.props.powerTC.disabled){
-            console.log('!!!!componentDidUpdate')
+     //       console.log('!!!!componentDidUpdate')
             this.setState({
                 selected: this.props.powerTC.value,
                 disabled: this.props.powerTC.disabled
